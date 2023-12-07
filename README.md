@@ -1,5 +1,5 @@
 # BionicFish
-# Final project for EN.540.635 at JHU
+## Final project for EN.540.635 at JHU
 ## This is Chowchong Tong and Nianxiang Xu for FinalProject  
 ## Abstract
 This project proposal outlines the development of a 2D game utilizing the pygame module
