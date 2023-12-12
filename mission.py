@@ -31,8 +31,8 @@ def mission():
     """
     width = 50
 
-    # Define circles
-    Circle(name="ball", num=1, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
+    # Define balls
+    ball1 = Circle(name="ball", num=1, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
                    color=ball_color, x=ball1_x, y=ball1_y, x_dot=0, y_dot=0, radius=ball_r)
 
     #ball2 = Circle(name="ball", num=2, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
