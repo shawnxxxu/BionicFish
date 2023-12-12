@@ -59,7 +59,7 @@ def step():
     return win()
 
 
-def run(time_count):
+def run(time_count, fish_speed):
     """
     Run the simulation with a given time limit.
     This function initializes the simulation, sets up the Pygame display, and
@@ -150,7 +150,7 @@ def run(time_count):
                     # Exit the function
                     return
 
-        clock.tick(200)
+        clock.tick(fish_speed)
         pygame.display.update()
 
 if __name__ == '__main__':
