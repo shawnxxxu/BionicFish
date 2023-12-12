@@ -46,6 +46,7 @@ def step():
 
     return win()
 
+
 def run():
     mission()
     pygame.init()
@@ -56,30 +57,44 @@ def run():
     result = False
     font = pygame.font.SysFont('microsoft Yahei', 50)
     text_win = font.render("complete", False, (0, 0, 255))
-    text_pause = font.render("pause", False, (0, 0, 255))
+    text_False = font.render("Time out, try again!!!", False, (0, 0, 255))
+    countdown_duration = 20
+    start_time = pygame.time.get_ticks()
+    game_over = False  # Flag to indicate if the game is over (win or timeout)
 
     while True:
+        current_time = pygame.time.get_ticks()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return  # Exit the function
+
+        if not game_over:
+            elapsed_time = (current_time - start_time) / 1000
+            remaining_time = max(countdown_duration - elapsed_time, 0)
+
         if result:
             screen.blit(text_win, (500, 250))
             pygame.display.flip()
-            pause_flag *= -1
-            result = False
-        else:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    exit()
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    # Toggle pause when the mouse is clicked
-                    pause_flag *= -1
-                    screen.blit(text_pause, (int(border_x * 7 / 8), int(border_y * 7 / 8)))
-                    print("pause")
+            game_over = True  # Set the game over flag
 
+        elif remaining_time <= 0 and not game_over:
+            screen.blit(text_False, (500, 250))
+            pygame.display.flip()
+            game_over = True  # Set the game over flag
+
+        if not game_over:
             if pause_flag == 1:
                 screen.fill((255, 255, 255))
                 global th
                 th += 1
                 print("*" * 10, th, "*" * 10)
                 result = step()
+                                
+                # Display the countdown timer
+                timer_text = font.render(f"Time Left: {remaining_time:.2f}", False, (255, 0, 0))
+                screen.blit(timer_text, (10, 10))  # Adjust position as needed
 
                 for a in obj_draw:
                     if a in obj_circle:
@@ -97,8 +112,15 @@ def run():
                         # Draw polygons
                         pygame.draw.polygon(screen, a.color, tuple(a.realtime_points.values()), 0)
 
-            clock.tick(500)
-            pygame.display.update()
+        if game_over:
+            # Check for a key press or some other event to exit after game over
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN or event.type == pygame.QUIT:
+                    pygame.quit()
+                    return  # Exit the function
+
+        clock.tick(500)
+        pygame.display.update()
 
 if __name__ == '__main__':
     run()
