@@ -5,6 +5,12 @@ from collision import final_is_colliding, AfterCollision
 from mission import *
 
 def step():
+    """
+    Perform one step of the simulation.
+    
+    Returns:
+        bool: True if the mission is complete, False otherwise
+    """
     # Implement Strategy
     for a in father_obj:
         if a.name == "robotfish":
