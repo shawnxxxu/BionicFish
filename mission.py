@@ -6,8 +6,8 @@ border_y = 800
 
 ball_dx = 60
 ball_dy = 40
-ball1_x = int(border_x * 3 / 4 - ball_dx)
-ball1_y = int(border_y / 2)
+ball_x = int(border_x * 3 / 4 - ball_dx)
+ball_y = int(border_y / 2)
 ball_r = 20
 ball_color = (0, 100, 100)
 
@@ -33,10 +33,10 @@ def mission():
 
     # Define balls
     ball1 = Circle(name="ball", num=1, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
-                   color=ball_color, x=ball1_x, y=ball1_y, x_dot=0, y_dot=0, radius=ball_r)
+                   color=ball_color, x=ball_x, y=ball_y, x_dot=0, y_dot=0, radius=ball_r)
 
     #ball2 = Circle(name="ball", num=2, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
-    #               color=ball_color, x=ball1_x + ball_dx, y=ball1_y + ball_dy, x_dot=0, y_dot=0, radius=ball_r)
+    #               color=ball_color, x=ball_x + ball_dx, y=ball_y + ball_dy, x_dot=0, y_dot=0, radius=ball_r)
 
 
     # Define goals
