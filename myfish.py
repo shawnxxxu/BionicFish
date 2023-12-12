@@ -76,10 +76,15 @@ def run(time_count, fish_speed):
     pygame.display.set_caption(task_name)
     pause_flag = 1
     result = False
-    font = pygame.font.SysFont('microsoft Yahei', 50)
-    text_win = font.render("Complete", False, (0, 0, 255))
-    text_False = font.render("Time out, try again!!!", False, (0, 0, 255))
     start_time = pygame.time.get_ticks()
+
+    # Set the font style and size for displaying text
+    font = pygame.font.SysFont('microsoft Yahei', 50)
+    # Create a text surface for the "Complete" message with blue color
+    text_win = font.render("Complete", False, (0, 0, 255))
+    # Create a text surface for the "Complete" message with blue color
+    text_False = font.render("Time out, try again!!!", False, (0, 0, 255))
+
     # Flag to indicate if the game is over (win or timeout)
     game_over = False
 

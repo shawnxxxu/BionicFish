@@ -57,11 +57,6 @@ def mission():
                                   'p2': (int(border_x / 2), width), 'p3': (-int(border_x / 2), width)},
                  x=int(border_x / 2), y=-width)
 
-    '''pool2 = Pool(name="pool", num=1, shape='polygon', n=4,
-                 relative_points={'p0': (-width, -int(border_y / 2)), 'p1': (-width, int(border_y / 2)),
-                                  'p2': (width, int(border_y / 2)), 'p3': (width, -int(border_y / 2))},
-                 x=int(border_x) + width, y=int(border_y / 2)) '''
-
 
 def win():
     """
