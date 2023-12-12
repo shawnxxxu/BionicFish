@@ -154,4 +154,4 @@ def run(time_count, fish_speed):
         pygame.display.update()
 
 if __name__ == '__main__':
-    run(time_count=30)
+    run(time_count=30, fish_speed=200)
