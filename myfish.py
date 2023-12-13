@@ -77,7 +77,6 @@ def run(time_count, fish_speed):
     pause_flag = 1
     result = False
     start_time = pygame.time.get_ticks()
-
     # Set the font style and size for displaying text
     font = pygame.font.SysFont('microsoft Yahei', 50)
     # Create a text surface for the "Complete" message with blue color
@@ -119,7 +118,7 @@ def run(time_count, fish_speed):
         if not game_over:
             if pause_flag == 1:
                 # Clear the screen and update simulation at each time step
-                screen.fill((255, 255, 255))
+                screen.fill((173, 216, 230))
                 global th
                 th += 1
                 print("*" * 10, th, "*" * 10)

@@ -657,26 +657,26 @@ class RobotFish(Polygon):
         """
         # Define the fish head as a circular component
         self.fish_head = Circle("fish_head", num, 'circle', mass=10, n=1, relative_points={'p0': (20, 0)}, radius=10,
-                                x=0, y=0, x_dot=0, y_dot=0, color=(20, 120, 200), last=self, father=self)
+                                x=0, y=0, x_dot=0, y_dot=0, color=(220,20,60), last=self, father=self)
 
         # Define the fish body components as polygonal shapes
         self.fish_body1 = Polygon("fish_body1", num, 'polygon', mass=10, n=4,
-                                  relative_points={'p0': (20, 10), 'p1': (-10, 10), 'p2': (-10, -10), 'p3': (20, -10)},
-                                  color=(20, 120, 200), x=x, y=y, theta=0, collision_detection=True,
+                                  relative_points={'p0': (17, 10), 'p1': (-10, 10), 'p2': (-10, -10), 'p3': (17, -10)},
+                                  color=(255,255,255), x=x, y=y, theta=0, collision_detection=True,
                                   last=self, father=self)
 
         self.fish_body2 = Polygon("fish_body2", num, 'polygon', mass=0.4, n=4,
                                   relative_points={'p0': (0, 10), 'p1': (-20, 5), 'p2': (-20, -5), 'p3': (0, -10)},
-                                  color=(20, 120, 200), x=-10 + x, y=y, theta=0, collision_detection=True,
+                                  color=(0,0,0), x=-10 + x, y=y, theta=0, collision_detection=True,
                                   last=self, father=self)
 
         self.fish_body3 = Polygon("fish_body3", num, 'polygon', mass=0.4, n=3,
-                                  relative_points={'p0': (0, 5), 'p1': (-20, 0), 'p2': (0, -5)}, color=(20, 120, 200),
+                                  relative_points={'p0': (0, 5), 'p1': (-20, 0), 'p2': (0, -5)}, color=(220,20,60),
                                   x=-40 + x, y=y, theta=0, collision_detection=True,
                                   last=self.fish_body2, father=self)
 
         self.fish_tail = Polygon("fish_tail", num, 'polygon', mass=0.4, n=3,
-                                 relative_points={'p0': (0, 0), 'p1': (-20, 2), 'p2': (-20, -2)}, color=(20, 120, 200),
+                                 relative_points={'p0': (0, 0), 'p1': (-20, 2), 'p2': (-20, -2)}, color=(255,255,255),
                                  theta=0, collision_detection=True,
                                  last=self.fish_body3, father=self)
 
