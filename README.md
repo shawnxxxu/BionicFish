@@ -1,5 +1,5 @@
 # Final project for EN.540.635 at JHU
-### Bionic Fish
+# Bionic Fish
 ## Abstract
 This project proposal outlines the development of a 2D game utilizing the pygame module
 in Python. The game will be task-oriented, featuring an Bionic Fish agent controlled by a
@@ -13,30 +13,27 @@ development and execution.
 
 ## Game Overview
 Upon launching main.py, players are introduced to a countdown timer. The objective is to maneuver the fish to bump balls into designated target points within the allotted time. Succeeding in this task results in victory, while failure to do so before time expires means defeat.
+  
+  
 ![image](https://github.com/chowchongtong/BionicFish/assets/74456922/dfeb255d-8386-44e1-8f9d-22358f8e5279)
 
-## Feature 
-Controls and Mechanics
-The bionic fish follows the movement of the mouse.
-Interaction with objects triggers the collision algorithm from collision.py, simulating realistic physical impacts.
-Effects of collisions vary based on the angle of impact and the relative masses of the objects involved.
-Players can adjust the fish's speed and the countdown timer to modify the game's difficulty.
-The quantity of balls and target points can be increased to add complexity.
+## Feature - Controls and Mechanics
+- The bionic fish follows the movement of the mouse.  
+- Interaction with objects triggers the collision algorithm from collision.py, simulating realistic physical impacts.  
+- Effects of collisions vary based on the angle of impact and the relative masses of the objects involved.  
+- Players can adjust the fish's speed and the countdown timer to modify the game's difficulty.  
+- The quantity of balls and target points can be increased to add complexity.  
 
 ## Requirements
 To run this game, ensure you have Python 3 and Pygame installed on your system.
 
 - Setup
 1. Install Python 3 if you haven't already.
-2. Install Pygame using pip:
-   
-- pip install pygame
-
+2. Install Pygame using pip: pip install pygame
+- Run
 1. Clone the repository or download the game files to your local machine.
 2. Navigate to the game directory in your terminal.
-3. Run the game with:
-
-python main.py
+3. Run the game with: python main.py
 
 ## File Descriptions
 - env.py: Contains environment variables and game settings.
