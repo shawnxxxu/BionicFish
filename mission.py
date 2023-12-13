@@ -64,22 +64,22 @@ def mission():
     Pool(name="pool", num=1, shape='polygon', n=4,
                  relative_points={'p0': (-int(border_x / 2), -width), 'p1': (int(border_x / 2), -width),
                                   'p2': (int(border_x / 2), width), 'p3': (-int(border_x / 2), width)},
-                 x= 700, y= -100)
+                 x= 700, y= -50)
     # left border
     Pool(name="pool", num=1, shape='polygon', n=4,
                  relative_points={'p0': (-width, -int(border_y / 2)), 'p1': (-width, int(border_y / 2)),
                                   'p2': (width, int(border_y / 2)), 'p3': (width, -int(border_y / 2))},
-                 x= -100, y= 400)
+                 x= -50, y= 400)
     # bottom border
     Pool(name="pool", num=1, shape='polygon', n=4,
                  relative_points={'p0': (-int(border_x / 2), -width), 'p1': (-int(border_x / 2), width),
                                   'p2': (int(border_x / 2), width), 'p3': (int(border_x / 2), -width)},
-                 x= 700, y= 900)
+                 x= 700, y= 850)
     # right border
     Pool(name="pool", num=1, shape='polygon', n=4,
                  relative_points={'p0': (-width, -int(border_x / 2)), 'p1': (-width, int(border_x / 2)),
                                   'p2': (width, int(border_x / 2)), 'p3': (width, -int(border_x / 2))},
-                 x=1500, y=400)
+                 x=1350, y=400)
 
 def win():
     """
