@@ -80,6 +80,7 @@ def mission():
                  relative_points={'p0': (-width, -int(border_x / 2)), 'p1': (-width, int(border_x / 2)),
                                   'p2': (width, int(border_x / 2)), 'p3': (width, -int(border_x / 2))},
                  x=1500, y=400)
+
 def win():
     """
     Check if a goal is reached by colliding with a ball.
