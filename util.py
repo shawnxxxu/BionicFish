@@ -1,21 +1,5 @@
 import math
 
-def transform_reference_frame(vector, theta):
-    """
-    Transform a vector from one reference frame to another.
-
-    Parameters:
-        vector (tuple): Input vector (x, y)
-        theta (float): Angle of rotation
-
-    Returns:
-        tuple: Transformed vector in the new reference frame (x', y')
-    """
-    # Perform a rotation transformation
-    x = vector[0] * math.cos(theta) + vector[1] * math.sin(theta)
-    y = -vector[0] * math.sin(theta) + vector[1] * math.cos(theta)
-    return x, y
-
 def normalize_theta(theta):
     """
     Normalize an angle to be within the range [-pi, pi).
@@ -33,27 +17,6 @@ def normalize_theta(theta):
     else:
         return theta
 
-def set_v_and_theta_v(a):
-    """
-    Set linear velocity and angular velocity based on x_dot and y_dot.
-
-    Parameters:
-        a (object): Object with x_dot, y_dot, v, and theta_v attributes
-    """
-    # Calculate linear velocity (v) and angular velocity (theta_v)
-    a.v = math.sqrt(a.x_dot * a.x_dot + a.y_dot * a.y_dot)
-    a.theta_v = get_theta_of_vector((a.x_dot, a.y_dot))
-
-def set_x_dot_and_y_dot(a):
-    """
-    Set x_dot and y_dot based on velocity v and orientation theta_v.
-
-    Parameters:
-        a (object): Object with v, theta_v, x_dot, and y_dot attributes
-    """
-    # Calculate x_dot and y_dot based on velocity and orientation
-    a.x_dot = a.v * math.cos(a.theta_v)
-    a.y_dot = a.v * math.sin(a.theta_v)
 
 def vector_plus(vector_a, vector_b):
     """
@@ -127,86 +90,6 @@ def vector_rotate(vector, theta):
     return (norm * round(math.cos(_theta), 15), norm * round(math.sin(_theta), 15))
 
 
-def polygon_rotate(realtime_points, point, theta):
-    """
-    Rotate all points of a polygon around a specified point by a given angle.
-
-    Parameters:
-        realtime_points (dict): Dictionary of points in the form {"p0": (x0, y0), "p1": (x1, y1), ...}
-        point (tuple): Center of rotation (x, y)
-        theta (float): Angle of rotation
-
-    Returns:
-        dict: Dictionary of rotated points {"p0": (x0', y0'), "p1": (x1', y1'), ...}
-    """
-    _realtime_points = {}
-    n = len(realtime_points)
-    for i in range(n):
-        vector = vector_minus(realtime_points["p%d" % i], point)
-        _vector = vector_rotate(vector, theta)
-        _realtime_points["p%d" % i] = vector_plus(_vector, point)
-    return _realtime_points
-
-def vector_smaller(vector1, vector2):
-    """
-    Check if vector1 is component-wise smaller than or equal to vector2.
-
-    Parameters:
-        vector1 (tuple): First vector (x1, y1)
-        vector2 (tuple): Second vector (x2, y2)
-
-    Returns:
-        bool: True if vector1 is smaller or equal to vector2, False otherwise
-    """
-    return vector1[0] <= vector2[0] and vector1[1] <= vector2[1]
-
-
-def vector_bigger(vector1, vector2):
-    """
-    Check if vector1 is component-wise bigger than or equal to vector2.
-
-    Parameters:
-        vector1 (tuple): First vector (x1, y1)
-        vector2 (tuple): Second vector (x2, y2)
-
-    Returns:
-        bool: True if vector1 is bigger or equal to vector2, False otherwise
-    """
-    return vector1[0] >= vector2[0] and vector1[1] >= vector2[1]
-
-
-def is_included(vector, _range):
-    """
-    Check if a vector is included in a specified range.
-
-    Parameters:
-        vector (tuple): Input vector (x, y)
-        _range (tuple): Range defined by two vectors [(x_min, y_min), (x_max, y_max)]
-
-    Returns:
-        bool: True if the vector is included in the range, False otherwise
-    """
-    return vector_bigger(vector, _range[0]) and vector_smaller(vector, _range[1])
-
-
-def bigger_or_smaller(a, b):
-    """
-    Compare two values and return 1 if a > b, -1 if a < b, and 0 if a == b.
-
-    Parameters:
-        a: First value
-        b: Second value
-
-    Returns:
-        int: 1 if a > b, -1 if a < b, 0 if a == b
-    """
-    if a > b:
-        return 1
-    elif a < b:
-        return -1
-    else:
-        return 0
-
 
 def get_norm_of_vector(vector):
     """
@@ -261,6 +144,24 @@ def get_theta_of_vector(value_array):
     else:
         theta = math.atan(value_array[1] / value_array[0])
     return theta
+
+def bigger_or_smaller(a, b):
+    """
+    Compare two values and return 1 if a > b, -1 if a < b, and 0 if a == b.
+
+    Parameters:
+        a: First value
+        b: Second value
+
+    Returns:
+        int: 1 if a > b, -1 if a < b, 0 if a == b
+    """
+    if a > b:
+        return 1
+    elif a < b:
+        return -1
+    else:
+        return 0
 
 def get_normal_vector(vector):
     """
@@ -373,43 +274,11 @@ def get_direction_of_theta_to_theta(realtime_theta, aiming_theta):
         return 0
     else:
         if flag1 == flag2:
-            """clockwise"""
+            # clockwise
             return -1
         else:
-            """counterclockwise"""
+            # counterclockwise
             return 1
-
-def get_v_of_position_colliding(a):
-    """
-    Get the velocity vector at the position of collision.
-
-    Parameters:
-        a: Object for which velocity is calculated
-
-    Returns:
-        tuple: Velocity vector at the collision position
-    """
-    v1 = (a.father.x_dot, a.father.y_dot)
-    r = vector_minus(a.position_colliding[2], (a.father.x, a.father.y))
-    v2_temp = get_norm_of_vector(r) * math.fabs(a.father.w)
-    if a.father.w == 0.0:
-        direction = 0
-    else:
-        direction = a.father.w / math.fabs(a.father.w)
-    theta_of_v2_temp = normalize_theta(get_theta_of_vector(r) + direction * math.pi / 2)
-    v2 = (v2_temp * math.cos(theta_of_v2_temp), v2_temp * math.sin(theta_of_v2_temp))
-    v = vector_plus(v1, v2)
-    if a.father != a:
-        _r = vector_minus(a.position_colliding[2], (a.x, a.y))
-        _v2_temp = get_norm_of_vector(_r) * math.fabs(a.w)
-        if a.w == 0.0:
-            _direction = 0
-        else:
-            _direction = a.w / math.fabs(a.w)
-        _theta_of_v2_temp = normalize_theta(get_theta_of_vector(_r) + _direction * math.pi / 2)
-        _v2 = (_v2_temp * math.cos(_theta_of_v2_temp), _v2_temp * math.sin(_theta_of_v2_temp))
-        v = vector_plus(v, _v2)
-    return v
 
 
 def get_v_final(vector_pos, a):

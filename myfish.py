@@ -118,7 +118,7 @@ def run(time_count, fish_speed):
         if not game_over:
             if pause_flag == 1:
                 # Clear the screen and update simulation at each time step
-                screen.fill((173, 216, 230))
+                screen.fill((173, 216, 250))
                 global th
                 th += 1
                 print("*" * 10, th, "*" * 10)
