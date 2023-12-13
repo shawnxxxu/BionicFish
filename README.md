@@ -13,7 +13,8 @@ development and execution.
 - Chong-Tong Chow: cchow14@jhu.edu  
 - Nianxiang Xu: nxu21@jhu.edu
 
-## Explaination
+## Features
+
 
 ## Requirements for running the code
 - python3
