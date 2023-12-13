@@ -209,8 +209,6 @@ def is_colliding_c_p(a, b):
     # If a collision occurred, calculate the normal vector and position
     if a_position_colliding is not None:
         n_ab = util.vector_minus(a_position_colliding[2], a.core)
-        pos = a_position_colliding[2]
-
         return True, a_position_colliding, b_position_colliding, n_ab
 
     # Return False if no collision occurred

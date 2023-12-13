@@ -12,8 +12,6 @@ obj_polygon = []
 obj_draw = []
 # List of objects for collision detection
 collision_detection = []
-# Copy of 'collision_detection' list
-_collision_detection = []
 # Dictionary storing objects currently colliding
 StillColliding = {}
 
