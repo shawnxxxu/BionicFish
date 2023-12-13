@@ -1,3 +1,10 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file contains functions to handle the physics of collisions between objects in a 2D environment. 
+These objects can have different masses, shapes, and velocities. The functions calculate the resulting velocities and impulses from both central and non-central collisions. 
+Additionally, they handle the rotational effects due to collisions.
+'''
 import math
 import util
 

@@ -1,3 +1,11 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file defines a winnning condition for the mission.
+and fails if the time is out.
+The file includes functions for initializing the simulation, 
+updating object positions, handling collisions, and determining mission completion.
+'''
 import pygame
 from strategy import strategy
 from move import move, set_move_last

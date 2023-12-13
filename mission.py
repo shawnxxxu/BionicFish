@@ -1,3 +1,10 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file defines a 2D simulation environment for a mission involving a robot fish, balls, and goals within a bordered pool. 
+The script sets up the environment, objects within it, and contains a function to determine the completion of a mission. 
+It uses custom classes such as Circle, RobotFish, Pool, and goal to represent different entities in the simulation.
+'''
 from env import *
 
 # Set up environment parameters

@@ -1,3 +1,10 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file contains a comprehensive set of classes and functions for simulating the physics of various objects, primarily focused on a 2D environment. 
+These objects include generic physics objects, circles, polygons, and specialized objects like robot fishes and pool borders. 
+The classes handle object properties, movement, collision detection, and interactions between objects.
+'''
 from util import *
 
 # List containing all objects of the physics class

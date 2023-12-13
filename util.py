@@ -1,3 +1,9 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file contains a collection of functions for performing various mathematical operations related to vector manipulation and angle calculations in a 2D space. 
+These functions are designed to support simulations or applications involving geometric calculations, physics, or robotics.
+'''
 import math
 
 def normalize_theta(theta):

@@ -1,3 +1,9 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file defines functions for moving and updating objects within a simulation environment, particularly focusing on a robot fish. 
+It includes methods for updating positions, velocities, and orientations of objects over time, as well as handling specific behaviors of the robot fish.
+'''
 from util import *
 
 

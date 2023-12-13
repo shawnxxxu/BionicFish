@@ -1,3 +1,10 @@
+'''
+EN.640.635 Software Carpentry
+Final project
+This Python file defines strategies for controlling a robot fish in a 2D simulation environment using the Pygame library. 
+The primary focus is to guide the robot fish towards a target, typically the mouse cursor, 
+and manage its velocity and orientation based on its current state and the target's position.
+'''
 import util
 from env import *
 import math
