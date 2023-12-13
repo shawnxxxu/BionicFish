@@ -12,7 +12,10 @@ development and execution.
 - Nianxiang Xu: nxu21@jhu.edu
 
 ## Game Overview
-Upon launching main.py, players are introduced to a countdown timer. The objective is using mouse to maneuver the fish to bump balls into designated target points within the allotted time. Succeeding in this task results in victory, while failure to do so before time expires means defeat.
+Upon launching main.py, players are introduced to a countdown timer.  
+
+The target is using mouse to maneuver the fish to bump balls into designated target points within the allotted time. Succeeding in this task results in victory, while failure to do so before time expires means defeat.
+  
   
   
 ![image](https://github.com/chowchongtong/BionicFish/assets/74456922/dfeb255d-8386-44e1-8f9d-22358f8e5279)
@@ -48,6 +51,7 @@ To run this game, ensure you have Python 3 and Pygame installed on your system.
 
 ## Design Philosophy
 The design concept of this bionic robotic fish draws inspiration from the traditional Chinese koi fish color palette.  
+
 Incorporating the rich symbolism associated with koi, the color scheme not only pays homage to cultural traditions but also symbolizes attributes such as perseverance, prosperity, and good fortune. The vibrant hues of the koi-inspired design aim to create an aesthetically pleasing and culturally resonant robotic fish.  
 
 <img width="97" alt="image" src="https://github.com/chowchongtong/BionicFish/assets/74456922/6e190330-6a92-43c7-a9fc-a7ec9073c952">
@@ -55,7 +59,9 @@ Incorporating the rich symbolism associated with koi, the color scheme not only 
 
 ## Reference
 Thanks to Zhichao Quan's effort in collision simulation.  
-Zhichao is research partner of Chong-Tong in his undergradute period. His major in Theoretical Mechanics, and he is good at mechanical problem.  
+
+Zhichao is research partner of Chong-Tong in his undergradute period. His major in Theoretical Mechanics, and he is good at mechanical problem. 
+
 In the previous period, Zhichao provided guidance to Chong-Tong in simulating object collisions through code, making significant contributions to the object collision simulation in this current project.
 
 ## Support
