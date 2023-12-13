@@ -1,10 +1,11 @@
 '''
 EN.640.635 Software Carpentry
 Final project
-This Python file defines a winnning condition for the mission.
+This Python file defines a winning condition for the mission.
 and fails if the time is out.
-The file includes functions for initializing the simulation, 
-updating object positions, handling collisions, and determining mission completion.
+The file includes functions for initializing the simulation,
+updating object positions, handling collisions,
+and determining mission completion.
 '''
 import pygame
 from strategy import strategy
@@ -12,10 +13,11 @@ from move import move, set_move_last
 from collision import final_is_colliding, AfterCollision
 from mission import *
 
+
 def step():
     """
     Perform one step of the simulation.
-    
+
     Returns:
         bool: True if the mission is complete, False otherwise
     """
@@ -46,14 +48,15 @@ def step():
             for b in _father_obj:
                 # Check for collisions between objects
                 result = final_is_colliding(a, b)
-                if result != False:
+                if result is not False:
                     c_flag = 1
                     a, b = result[1], result[2]
                     Flag = "a" if b.shape != "circle" and not a.fixed else "b"
 
-                    # Perform actions after collision based on collision calculation flag
+                    # Perform actions after collision based on calculation flag
                     if a.collision_calculation and b.collision_calculation:
-                        AfterCollision(a, b) if Flag == "a" else AfterCollision(b, a)
+                        AfterCollision(a, b) if Flag == "a" \
+                            else AfterCollision(b, a)
 
     # Update the last position and orientation for all objects
     for a in all_obj:
@@ -98,7 +101,7 @@ def run(time_count, fish_speed):
 
     while True:
         current_time = pygame.time.get_ticks()
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -132,9 +135,10 @@ def run(time_count, fish_speed):
                 th += 1
                 print("*" * 10, th, "*" * 10)
                 result = step()
-                                
+
                 # Display the countdown timer
-                timer_text = font.render(f"Time Left: {remaining_time:.2f}", False, (255, 0, 0))
+                timer_text = font.render(f"Time Left: {remaining_time:.2f}",
+                                         False, (255, 0, 0))
                 # Adjust position as needed
                 screen.blit(timer_text, (10, 10))
 
@@ -144,16 +148,30 @@ def run(time_count, fish_speed):
                         if a.mass == 0:
                             # Draw circle for objects with mass 0
                             pygame.draw.circle(screen, a.color,
-                                               (int(a.realtime_points['p0'][0]), int(a.realtime_points['p0'][1])),
-                                               int(a.radius + a.draw_radius), 1)
+                                               (int(
+                                                   a.realtime_points['p0'][0]
+                                               ),
+                                                int(
+                                                    a.realtime_points['p0'][1])
+                                               ),
+                                               int(
+                                                   a.radius+a.draw_radius), 1
+                                               )
                         elif a.mass != 0:
                             # Draw circle for objects with non-zero mass
                             pygame.draw.circle(screen, a.color,
-                                               (int(a.realtime_points['p0'][0]), int(a.realtime_points['p0'][1])),
+                                               (int(
+                                                   a.realtime_points['p0'][0]
+                                               ),
+                                                int(
+                                                    a.realtime_points['p0'][1])
+                                               ),
                                                int(a.radius))
                     elif a in obj_polygon:
                         # Draw polygons
-                        pygame.draw.polygon(screen, a.color, tuple(a.realtime_points.values()), 0)
+                        pygame.draw.polygon(
+                            screen, a.color,
+                            tuple(a.realtime_points.values()), 0)
 
         if game_over:
             # Check for a key press or some other event to exit after game over
@@ -165,6 +183,7 @@ def run(time_count, fish_speed):
 
         clock.tick(fish_speed)
         pygame.display.update()
+
 
 if __name__ == '__main__':
     run(time_count=30, fish_speed=200)

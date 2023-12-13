@@ -3,7 +3,6 @@ EN.640.635 Software Carpentry
 Final project
 This Python file contains functions for collision detection and handling between objects in a 2D environment. 
 The objects can be circles, polygons, or a combination of both.
-
 '''
 import math
 import util
