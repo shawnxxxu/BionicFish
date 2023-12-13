@@ -1,10 +1,14 @@
 '''
 EN.640.635 Software Carpentry
 Final project
-This Python file contains a collection of functions for performing various mathematical operations related to vector manipulation and angle calculations in a 2D space. 
-These functions are designed to support simulations or applications involving geometric calculations, physics, or robotics.
+This Python file contains a collection of functions for
+performing various mathematical operations related to vector manipulation
+and angle calculations in a 2D space.
+These functions are designed to support simulations or
+applications involving geometric calculations, physics, or robotics.
 '''
 import math
+
 
 def normalize_theta(theta):
     """
@@ -37,6 +41,7 @@ def vector_plus(vector_a, vector_b):
     """
     return (vector_a[0] + vector_b[0], vector_a[1] + vector_b[1])
 
+
 def vector_minus(vector_a, vector_b):
     """
     Subtract vector_b from vector_a element-wise.
@@ -50,6 +55,7 @@ def vector_minus(vector_a, vector_b):
     """
     return (vector_a[0] - vector_b[0], vector_a[1] - vector_b[1])
 
+
 def vector_point_mutiple(vector_a, vector_b):
     """
     Calculate the dot product of two vectors.
@@ -62,6 +68,7 @@ def vector_point_mutiple(vector_a, vector_b):
         float: Dot product of the two vectors (a1 * b1 + a2 * b2)
     """
     return vector_a[0] * vector_b[0] + vector_a[1] * vector_b[1]
+
 
 def vector_multiple(vector, num):
     """
@@ -80,6 +87,7 @@ def vector_multiple(vector, num):
         _vector.append(vector[i] * num)
     return tuple(_vector)
 
+
 def vector_rotate(vector, theta):
     """
     Rotate a 2D vector by a specified angle.
@@ -93,8 +101,15 @@ def vector_rotate(vector, theta):
     """
     norm = get_norm_of_vector(vector)
     _theta = get_theta_of_vector(vector) + theta
-    return (norm * round(math.cos(_theta), 15), norm * round(math.sin(_theta), 15))
-
+    return (
+        norm *
+        round(
+            math.cos(_theta),
+            15),
+        norm *
+        round(
+            math.sin(_theta),
+            15))
 
 
 def get_norm_of_vector(vector):
@@ -151,6 +166,7 @@ def get_theta_of_vector(value_array):
         theta = math.atan(value_array[1] / value_array[0])
     return theta
 
+
 def bigger_or_smaller(a, b):
     """
     Compare two values and return 1 if a > b, -1 if a < b, and 0 if a == b.
@@ -168,6 +184,7 @@ def bigger_or_smaller(a, b):
         return -1
     else:
         return 0
+
 
 def get_normal_vector(vector):
     """
@@ -234,7 +251,8 @@ def get_vector_from_vector_projection(vector, vector_dir):
 
 def get_distance_between_points(p1, p2, p3):
     """
-    Get the distance between a point 'p1' and the line segment formed by 'p2' and 'p3'.
+    Get the distance between a point 'p1'
+    and the line segment formed by 'p2' and 'p3'.
 
     Parameters:
         p1 (tuple): Point coordinates (x1, y1)
@@ -242,7 +260,8 @@ def get_distance_between_points(p1, p2, p3):
         p3 (tuple): Line segment endpoint coordinates (x3, y3)
 
     Returns:
-        tuple: Tuple containing the parameter 'k', the closest point 'p4' on the line segment,
+        tuple: Tuple containing the parameter 'k',
+        the closest point 'p4' on the line segment,
                and the distance between 'p1' and 'p4'.
     """
     k = (
@@ -255,7 +274,8 @@ def get_distance_between_points(p1, p2, p3):
 
 def get_direction_of_theta_to_theta(realtime_theta, aiming_theta):
     """
-    Get the direction (clockwise, counterclockwise, or none) from 'realtime_theta' to 'aiming_theta'.
+    Get the direction (clockwise, counterclockwise, or none)
+    from 'realtime_theta' to 'aiming_theta'.
 
     Parameters:
         realtime_theta (float): Current angle in radians
@@ -307,7 +327,8 @@ def get_v_final(vector_pos, a):
 
 def get_v(vector_pos, a):
     """
-    Get the instantaneous velocity at a given position for the individual object.
+    Get the instantaneous velocity at
+    a given position for the individual object.
 
     Parameters:
         vector_pos (tuple): Position vector (x, y)
@@ -322,8 +343,9 @@ def get_v(vector_pos, a):
         direction = 0
     else:
         direction = a.w / math.fabs(a.w)
-    theta_of_v_temp = normalize_theta(get_theta_of_vector(r) + direction * math.pi / 2)
-    v = (v_temp * math.cos(theta_of_v_temp), v_temp * math.sin(theta_of_v_temp))
+    theta_of_v_temp = normalize_theta(
+        get_theta_of_vector(r) + direction * math.pi / 2)
+    v = (v_temp * math.cos(theta_of_v_temp),
+         v_temp * math.sin(theta_of_v_temp))
     v = vector_plus(v, (a.x_dot, a.y_dot))
     return v
-

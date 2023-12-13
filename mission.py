@@ -1,9 +1,12 @@
 '''
 EN.640.635 Software Carpentry
 Final project
-This Python file defines a 2D simulation environment for a mission involving a robot fish, balls, and goals within a bordered pool. 
-The script sets up the environment, objects within it, and contains a function to determine the completion of a mission. 
-It uses custom classes such as Circle, RobotFish, Pool, and goal to represent different entities in the simulation.
+This Python file defines a 2D simulation environment
+for a mission involving a robot fish, balls, and goals within a bordered pool.
+The script sets up the environment, objects within it,
+and contains a function to determine the completion of a mission.
+It uses custom classes such as Circle, RobotFish, Pool,
+and goal to represent different entities in the simulation.
 '''
 from env import *
 
@@ -41,52 +44,102 @@ goal_color = (100, 0, 100)
 task_name = "robotfish"
 width = 100
 
+
 def mission():
     """
     Define mission environment with circles and goals.
     """
 
     # Define balls
-    Circle(name="ball", num=1, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
-                   color=ball_color, x=ball_x, y=ball_y, x_dot=0, y_dot=0, radius=ball_r)
+    Circle(
+        name="ball",
+        num=1,
+        shape="circle",
+        mass=1,
+        n=1,
+        relative_points={
+            'p0': (
+                0,
+                0)},
+        color=ball_color,
+        x=ball_x,
+        y=ball_y,
+        x_dot=0,
+        y_dot=0,
+        radius=ball_r)
 
-    #ball2 = Circle(name="ball", num=2, shape="circle", mass=1, n=1, relative_points={'p0': (0, 0)},
-    #               color=ball_color, x=ball_x + ball_dx, y=ball_y + ball_dy, x_dot=0, y_dot=0, radius=ball_r)
-
+    # ball2 = Circle(name="ball", num=2, shape="circle",
+    # mass=1, n=1, relative_points={'p0': (0, 0)},
+    # color=ball_color, x=ball_x + ball_dx, y=ball_y + ball_dy, x_dot=0,
+    # y_dot=0, radius=ball_r)
 
     # Define goals
-    goal(name="goal", num=1, shape='circle', n=1, relative_points={'p0': (0, 0)}, color=goal_color,
-                 x=goal1_x, y=goal1_y, x_dot=0, y_dot=0, draw_radius=goal_r)
+    goal(
+        name="goal",
+        num=1,
+        shape='circle',
+        n=1,
+        relative_points={
+            'p0': (
+                0,
+                0)},
+        color=goal_color,
+        x=goal1_x,
+        y=goal1_y,
+        x_dot=0,
+        y_dot=0,
+        draw_radius=goal_r)
 
-    #goal2 = goal(name="goal", num=2, shape='circle', n=1, relative_points={'p0': (0, 0)}, color=goal_color,
-    #             x=goal1_x - goal_dx, y=goal1_y + goal_dy, x_dot=0, y_dot=0, draw_radius=goal_r)
-
+    # goal2 = goal(name="goal", num=2, shape='circle', n=1,
+    # relative_points={'p0': (0, 0)}, color=goal_color,
+    # x=goal1_x - goal_dx, y=goal1_y + goal_dy, x_dot=0, y_dot=0,
+    # draw_radius=goal_r)
 
     # Define robot fish
-    RobotFish(name='robotfish', num=1, shape='polygon', mass=10, n=6, relative_points={}, color=ball_color,
-                           x=fish_x, y=fish_y, x_dot=0, y_dot=0, theta=0)
+    RobotFish(
+        name='robotfish',
+        num=1,
+        shape='polygon',
+        mass=10,
+        n=6,
+        relative_points={},
+        color=ball_color,
+        x=fish_x,
+        y=fish_y,
+        x_dot=0,
+        y_dot=0,
+        theta=0)
 
     # Define pools
     # top border
     Pool(name="pool", num=1, shape='polygon', n=4,
-                 relative_points={'p0': (-int(border_x / 2), -width), 'p1': (int(border_x / 2), -width),
-                                  'p2': (int(border_x / 2), width), 'p3': (-int(border_x / 2), width)},
-                 x= 700, y= -100)
+         relative_points={'p0': (-int(border_x / 2), -width),
+                          'p1': (int(border_x / 2), -width),
+                          'p2': (int(border_x / 2), width),
+                          'p3': (-int(border_x / 2), width)},
+         x=700, y=-100)
     # left border
     Pool(name="pool", num=1, shape='polygon', n=4,
-                 relative_points={'p0': (-width, -int(border_y / 2)), 'p1': (-width, int(border_y / 2)),
-                                  'p2': (width, int(border_y / 2)), 'p3': (width, -int(border_y / 2))},
-                 x= -100, y= 400)
+         relative_points={'p0': (-width, -int(border_y / 2)),
+                          'p1': (-width, int(border_y / 2)),
+                          'p2': (width, int(border_y / 2)),
+                          'p3': (width, -int(border_y / 2))},
+         x=-100, y=400)
     # bottom border
     Pool(name="pool", num=1, shape='polygon', n=4,
-                 relative_points={'p0': (-int(border_x / 2), -width), 'p1': (-int(border_x / 2), width),
-                                  'p2': (int(border_x / 2), width), 'p3': (int(border_x / 2), -width)},
-                 x= 700, y= 900)
+         relative_points={'p0': (-int(border_x / 2), -width),
+                          'p1': (-int(border_x / 2), width),
+                          'p2': (int(border_x / 2), width),
+                          'p3': (int(border_x / 2), -width)},
+         x=700, y=900)
     # right border
     Pool(name="pool", num=1, shape='polygon', n=4,
-                 relative_points={'p0': (-width, -int(border_x / 2)), 'p1': (-width, int(border_x / 2)),
-                                  'p2': (width, int(border_x / 2)), 'p3': (width, -int(border_x / 2))},
-                 x=1500, y=400)
+         relative_points={'p0': (-width, -int(border_x / 2)),
+                          'p1': (-width, int(border_x / 2)),
+                          'p2': (width, int(border_x / 2)),
+                          'p3': (width, -int(border_x / 2))},
+         x=1500, y=400)
+
 
 def win():
     """
@@ -101,4 +154,3 @@ def win():
                         ab_num.append((a.num, b.num))
                         return True
     return False
-

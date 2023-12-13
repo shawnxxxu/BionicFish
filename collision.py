@@ -1,7 +1,8 @@
 '''
 EN.640.635 Software Carpentry
 Final project
-This Python file contains functions for collision detection and handling between objects in a 2D environment. 
+This Python file contains functions for collision detection
+and handling between objects in a 2D environment.
 The objects can be circles, polygons, or a combination of both.
 '''
 import math
@@ -12,9 +13,11 @@ import function
 global C_RANGE
 C_RANGE = 0
 
+
 def final_is_colliding(a, b, a_flag=0, b_flag=0):
     """
-    Check if two objects are colliding and return the collision result along with object information.
+    Check if two objects are colliding and
+    return the collision result along with object information.
 
     Parameters:
         a (object): The first object
@@ -100,10 +103,10 @@ def final_is_colliding(a, b, a_flag=0, b_flag=0):
     return False
 
 
-
 def is_colliding(a, b, a_shape, b_shape):
     """
-    Check if two objects are colliding based on their shapes and return the collision result.
+    Check if two objects are colliding based on their shapes
+    and return the collision result.
 
     Parameters:
         a (object): The first object
@@ -151,16 +154,24 @@ def is_colliding_c_c(a, b):
     # Calculate the distance between the centers of the circles
     distance = util.get_norm_of_vector(util.vector_minus(a.core, b.core))
 
-    # Check if the distance is less than or equal to the sum of radii plus a range (C_RANGE)
+    # Check if the distance is less than or equal to the sum of radii plus a
+    # range (C_RANGE)
     if distance <= radius + C_RANGE:
-        # Calculate the normal vector pointing from the second circle to the first
+        # Calculate the normal vector pointing from the second circle to the
+        # first
         n_ab = util.vector_minus(b.core, a.core)
 
-        # Calculate the position of the collision on the edge of the first circle
-        pos_a = util.vector_plus(a.core, util.vector_multiple(n_ab, a.radius / radius))
+        # Calculate the position of the collision on the edge of the first
+        # circle
+        pos_a = util.vector_plus(
+            a.core, util.vector_multiple(
+                n_ab, a.radius / radius))
 
-        # Calculate the position of the collision on the edge of the second circle
-        pos_b = util.vector_plus(b.core, util.vector_multiple(n_ab, -b.radius / radius))
+        # Calculate the position of the collision on the edge of the second
+        # circle
+        pos_b = util.vector_plus(
+            b.core, util.vector_multiple(
+                n_ab, -b.radius / radius))
 
         # Return True to indicate a collision and provide collision information
         return True, ("edge", 0, pos_a), ("edge", 0, pos_b), n_ab
@@ -168,9 +179,11 @@ def is_colliding_c_c(a, b):
     # Return False if no collision occurred
     return False
 
+
 def is_colliding_c_p(a, b):
     """
-    Check if a circle and a polygon are colliding and return the collision result.
+    Check if a circle and a polygon are colliding
+    and return the collision result.
 
     Parameters:
         a (object): The circle object
@@ -193,7 +206,8 @@ def is_colliding_c_p(a, b):
 
     # Check for collision with each point of the polygon
     for i1 in range(b.n):
-        if util.get_norm_of_vector(util.vector_minus(a.core, dict_points_b["p%d" % i1])) <= a.radius + C_RANGE:
+        if util.get_norm_of_vector(util.vector_minus(
+                a.core, dict_points_b["p%d" % i1])) <= a.radius + C_RANGE:
             b_position_colliding = ("point", i1, dict_points_b["p%d" % i1])
             a_position_colliding = ("edge", 0, dict_points_b["p%d" % i1])
             POINT_COLLIDING = True
@@ -204,8 +218,9 @@ def is_colliding_c_p(a, b):
     # If no collision with points, check for collision with edges
     if not POINT_COLLIDING:
         for i2 in range(b.n):
-            _vector = util.get_distance_between_points(a.core, dict_points_b["p%d" % i2],
-                                                       dict_points_b["p%d" % ((i2 + 1) % b.n)])
+            _vector = util.get_distance_between_points(
+                a.core, dict_points_b["p%d" % i2],
+                dict_points_b["p%d" % ((i2 + 1) % b.n)])
             if _vector[2] <= a.radius + C_RANGE:
                 if 0 <= _vector[0] <= 1:
                     b_position_colliding = ("edge", i2, _vector[1])
@@ -219,6 +234,7 @@ def is_colliding_c_p(a, b):
 
     # Return False if no collision occurred
     return False
+
 
 def is_colliding_p_p(a, b):
     """
@@ -234,7 +250,8 @@ def is_colliding_p_p(a, b):
         tuple: Information about the collision on the second polygon
         tuple: Normal vector of the collision
     """
-    # Obtain real-time information about points, ranges, and normal edges of both polygons
+    # Obtain real-time information about points, ranges, and normal edges of
+    # both polygons
     dict_points_a = a.get_realtime_points()
     dict_points_b = b.get_realtime_points()
     dict_of_range_b = b.range_of_relative_vector_projection_norm
@@ -249,10 +266,12 @@ def is_colliding_p_p(a, b):
     for i in range(a.n):
         # Check if a point from polygon A is inside polygon B
         flag = 0
-        relative_vector_ab = util.vector_minus(dict_points_a["p%d" % i], (b.x, b.y))
+        relative_vector_ab = util.vector_minus(
+            dict_points_a["p%d" % i], (b.x, b.y))
 
         for j in range(b.n):
-            vector = util.get_vector_from_vector_projection(relative_vector_ab, realtime_normal_edges_b["e%d" % j])
+            vector = util.get_vector_from_vector_projection(
+                relative_vector_ab, realtime_normal_edges_b["e%d" % j])
 
             if realtime_normal_edges_b["e%d" % j][0] != 0:
                 k = vector[0] / realtime_normal_edges_b["e%d" % j][0]
@@ -260,7 +279,9 @@ def is_colliding_p_p(a, b):
                 k = vector[1] / realtime_normal_edges_b["e%d" % j][1]
 
             # Check if the point is within the specified range along the edge
-            if k < dict_of_range_b["e%d" % j][0] or k > dict_of_range_b["e%d" % j][1]:
+            if k < dict_of_range_b["e%d" %
+                                   j][0] or k > dict_of_range_b["e%d" %
+                                                                j][1]:
                 flag = 1
                 break
             else:
@@ -282,16 +303,19 @@ def is_colliding_p_p(a, b):
             point = dict_points_a["p%d" % i]
             a_position_colliding = ("point", i, point)
             b_position_colliding = ("edge", num, point)
-            n_ab = util.vector_multiple(realtime_normal_edges_b["e%d" % num], -1)
+            n_ab = util.vector_multiple(
+                realtime_normal_edges_b["e%d" % num], -1)
             break
 
     for i in range(b.n):
         # Check if a point from polygon B is inside polygon A
         flag = 0
-        relative_vector_ba = util.vector_minus(dict_points_b["p%d" % i], (a.x, a.y))
+        relative_vector_ba = util.vector_minus(
+            dict_points_b["p%d" % i], (a.x, a.y))
 
         for j in range(a.n):
-            vector = util.get_vector_from_vector_projection(relative_vector_ba, realtime_normal_edges_a["e%d" % j])
+            vector = util.get_vector_from_vector_projection(
+                relative_vector_ba, realtime_normal_edges_a["e%d" % j])
 
             if realtime_normal_edges_a["e%d" % j][0] != 0:
                 k = vector[0] / realtime_normal_edges_a["e%d" % j][0]
@@ -299,7 +323,9 @@ def is_colliding_p_p(a, b):
                 k = vector[1] / realtime_normal_edges_a["e%d" % j][1]
 
             # Check if the point is within the specified range along the edge
-            if k < dict_of_range_a["e%d" % j][0] or k > dict_of_range_a["e%d" % j][1]:
+            if k < dict_of_range_a["e%d" %
+                                   j][0] or k > dict_of_range_a["e%d" %
+                                                                j][1]:
                 flag = 1
                 break
             else:
@@ -332,10 +358,10 @@ def is_colliding_p_p(a, b):
     return False
 
 
-
 def is_v_v(pos, a, b, n_ab):
     """
-    Check if the collision point velocities are in the "mutually approaching" state.
+    Check if the collision point velocities are in the
+    "mutually approaching" state.
 
     Parameters:
         pos (tuple): The collision point position
@@ -390,11 +416,13 @@ def AfterCollision(a, b):
                 d = dict_normal_edge["e%d" % b.position_colliding[1]]
                 i = function.non_centric_collision(a, b, d)
             elif a.shape == "polygon":
-                if a.position_colliding[0] == "edge" and b.position_colliding[0] == "point":
+                if a.position_colliding[0] == "edge" \
+                        and b.position_colliding[0] == "point":
                     dict_normal_edge = a.get_realtime_normal_edges()
                     d = dict_normal_edge["e%d" % a.position_colliding[1]]
                     d = util.vector_multiple(d, -1)
-                elif b.position_colliding[0] == "edge" and a.position_colliding[0] == "point":
+                elif b.position_colliding[0] == "edge" \
+                        and a.position_colliding[0] == "point":
                     dict_normal_edge = b.get_realtime_normal_edges()
                     d = dict_normal_edge["e%d" % b.position_colliding[1]]
                 i = function.non_centric_collision(a, b, d)
@@ -433,7 +461,8 @@ def AfterCollision(a, b):
         # Handle collision between two polygons
         elif a.shape == "polygon" and b.shape == "polygon":
             colliding_position = a.position_colliding[2]
-            if a.position_colliding[0] == "edge" and b.position_colliding[0] == "point":
+            if a.position_colliding[0] == "edge" \
+                    and b.position_colliding[0] == "point":
                 dict_normal_edge = a.get_realtime_normal_edges()
                 d = dict_normal_edge["e%d" % a.position_colliding[1]]
                 d = util.vector_multiple(d, -1)

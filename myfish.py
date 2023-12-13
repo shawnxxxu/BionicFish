@@ -151,11 +151,11 @@ def run(time_count, fish_speed):
                                                (int(
                                                    a.realtime_points['p0'][0]
                                                ),
-                                                int(
-                                                    a.realtime_points['p0'][1])
+                                                   int(
+                                                   a.realtime_points['p0'][1])
                                                ),
                                                int(
-                                                   a.radius+a.draw_radius), 1
+                                                   a.radius + a.draw_radius), 1
                                                )
                         elif a.mass != 0:
                             # Draw circle for objects with non-zero mass
@@ -163,8 +163,8 @@ def run(time_count, fish_speed):
                                                (int(
                                                    a.realtime_points['p0'][0]
                                                ),
-                                                int(
-                                                    a.realtime_points['p0'][1])
+                                                   int(
+                                                   a.realtime_points['p0'][1])
                                                ),
                                                int(a.radius))
                     elif a in obj_polygon:
