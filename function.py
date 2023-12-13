@@ -31,7 +31,7 @@ def non_centric_collision(a, b, dir):
         b (object): The second object
         dir (tuple): Direction of the collision force
 
-    Returns:util
+    Returns:
         float: Impulse magnitude
     """
     theta_d_ba = util.get_theta_of_vector(dir)

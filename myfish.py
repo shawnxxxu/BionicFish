@@ -65,8 +65,9 @@ def run(time_count, fish_speed):
     This function initializes the simulation, sets up the Pygame display, and
     runs the main simulation loop.
 
-    Args:
+    Parameters:
         time_count (int): The time limit for the simulation in seconds.
+        fish_speed (int): The speed for fish moving.
     """
     # Initialize mission parameters and Pygame
     mission()
