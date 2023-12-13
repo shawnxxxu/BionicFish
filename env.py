@@ -162,7 +162,8 @@ class physics:
         """
         Sets the relative edges of the object based on its relative points.
 
-        :return: A dictionary containing relative edges.
+        Returns:
+            A dictionary containing relative edges.
         """
         relative_edges = {}
         for i in range(self.n):
@@ -175,7 +176,8 @@ class physics:
         """
         Sets the unit normal vectors for each edge.
 
-        :return: A dictionary containing relative normal edges.
+        Returns:
+            A dictionary containing relative normal edges.
         """
         relative_normal_edges = {}
         for i in range(self.n):
@@ -192,7 +194,8 @@ class physics:
         """
         Returns a dictionary containing the range of projections on unit normal vectors for each edge.
 
-        :return: A dictionary with edge keys and corresponding (min, max) values.
+        Returns:
+            A dictionary with edge keys and corresponding (min, max) values.
         """
         dict_of_range = {}
         range_of_relative_vector_projection_x = {}
@@ -227,7 +230,8 @@ class physics:
         """
         Calculates the real-time points based on rotation and translation.
 
-        :return: A dictionary containing real-time points.
+        Returns:
+            A dictionary containing real-time points.
         """
         realtime_points = {}
         for i in range(self.n):
@@ -240,7 +244,8 @@ class physics:
         """
         Calculates the real-time rotation angle.
 
-        :return: The real-time rotation angle.
+        Returns:
+            The real-time rotation angle.
         """
         if self.last == self:
             realtime_theta = self.theta
@@ -255,7 +260,8 @@ class physics:
         """
         Calculates the real-time edges based on rotation.
 
-        :return: A dictionary containing real-time edges.
+        Returns:
+            A dictionary containing real-time edges.
         """
         realtime_edges = {}
         for i in range(self.n):
@@ -267,7 +273,8 @@ class physics:
         """
         Calculates the real-time edges based on rotation.
 
-        :return: A dictionary containing real-time edges.
+        Returns:
+            A dictionary containing real-time edges.
         """
         realtime_edges = {}
         for i in range(self.n):
@@ -278,8 +285,6 @@ class physics:
     def set_v_and_theta_v(self):
         """
         Sets the magnitude and direction of velocity based on x and y components.
-
-        :return: None
         """
         # Calculate the magnitude of velocity
         self.v = math.sqrt(self.x_dot * self.x_dot + self.y_dot * self.y_dot)
@@ -289,8 +294,6 @@ class physics:
     def set_x_dot_and_y_dot(self):
         """
         Sets the x and y components of velocity based on magnitude and direction.
-
-        :return: None
         """
         # Calculate the x and y components of velocity
         self.x_dot = self.v * math.cos(self.theta_v)
@@ -330,7 +333,8 @@ class Circle(physics):
         """
         Finds the center of the outer bounding circle.
 
-        :return: The center of the outer bounding circle.
+        Returns:
+            The center of the outer bounding circle.
         """
         total = (0, 0)
         for i in range(self.n):
@@ -420,7 +424,8 @@ class Polygon(physics):
         """
         Sets the relative edges of the polygon.
 
-        :return: A dictionary containing relative edges.
+        Returns:
+            A dictionary containing relative edges.
         """
         relative_edges = {}
         for i in range(self.n):
@@ -432,7 +437,8 @@ class Polygon(physics):
         """
         Sets the unit normal vectors for each edge.
 
-        :return: A dictionary containing relative normal edges.
+        Returns:
+            A dictionary containing relative normal edges.
         """
         relative_normal_edges = {}
         for i in range(self.n):
@@ -448,7 +454,8 @@ class Polygon(physics):
         """
         Calculates the radius of the bounding circle.
 
-        :return: The radius of the bounding circle.
+        Returns:
+            The radius of the bounding circle.
         """
         r = 0
         for i in range(self.n):
@@ -461,7 +468,8 @@ class Polygon(physics):
         """
         Finds the center of the bounding circle.
 
-        :return: The center of the bounding circle.
+        Returns:
+            The center of the bounding circle.
         """
         total = (0, 0)
         for i in range(self.n):
@@ -472,7 +480,8 @@ class Polygon(physics):
         """
         Returns a dictionary containing the range of projections on unit normal vectors for each edge.
 
-        :return: A dictionary with edge keys and corresponding (min, max) values.
+        Returns:
+            A dictionary with edge keys and corresponding (min, max) values.
         """
         dict_of_range = {}
         range_of_relative_vector_projection_x = {}
@@ -505,7 +514,8 @@ class Polygon(physics):
         """
         Calculates real-time points based on rotation and translation.
 
-        :return: A dictionary containing real-time points.
+        Returns:
+            A dictionary containing real-time points.
         """
         realtime_points = {}
         for i in range(self.n):
@@ -517,7 +527,8 @@ class Polygon(physics):
         """
         Calculates real-time edges based on rotation.
 
-        :return: A dictionary containing real-time edges.
+        Returns:
+            A dictionary containing real-time edges.
         """
         realtime_edges = {}
         for i in range(self.n):
@@ -530,7 +541,8 @@ class Polygon(physics):
         """
         Calculates real-time normal edges based on rotation.
 
-        :return: A dictionary containing real-time normal edges.
+        Returns:
+            A dictionary containing real-time normal edges.
         """
         realtime_normal_edges = {}
         for i in range(self.n):
