@@ -40,7 +40,7 @@ To run this game, ensure you have Python 3 and Pygame installed on your system.
 - function.py: Helper functions for various game tasks.
 - myfish.py: Defines the fish's behavior and properties and task.
 - util.py: Utility functions for general purposes.
-- strategy.py: Holds the game's strategic elements and mechanics.
+- strategy.py: Holds the game's strategic elements and mechanics, including fish's control under mouse.
 - move.py: Manages the movement and control of game entities.
 - mission.py: Defines the mission objectives and conditions.
 - collision.py: Collision detection and physics simulation.
