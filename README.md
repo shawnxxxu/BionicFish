@@ -12,7 +12,7 @@ development and execution.
 - Nianxiang Xu: nxu21@jhu.edu
 
 ## Game Overview
-Upon launching main.py, players are introduced to a countdown timer. The objective is to maneuver the fish to bump balls into designated target points within the allotted time. Succeeding in this task results in victory, while failure to do so before time expires means defeat.
+Upon launching main.py, players are introduced to a countdown timer. The objective is using mouse to maneuver the fish to bump balls into designated target points within the allotted time. Succeeding in this task results in victory, while failure to do so before time expires means defeat.
   
   
 ![image](https://github.com/chowchongtong/BionicFish/assets/74456922/dfeb255d-8386-44e1-8f9d-22358f8e5279)
