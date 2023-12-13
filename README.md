@@ -31,8 +31,9 @@ The target is using mouse to maneuver the fish to bump balls into designated tar
 To run this game, ensure you have Python 3 and Pygame installed on your system.
 
 - Setup
-1. Install Python 3 if you haven't already.
-2. Install Pygame using pip: pip install pygame
+1. Install Python3 if you haven't already.
+2. Install math if you haven't already.
+3. Install Pygame using pip: pip install pygame
 - Run
 1. Clone the repository or download the game files to your local machine.
 2. Navigate to the game directory in your terminal.
