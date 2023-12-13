@@ -177,8 +177,6 @@ def is_colliding_c_p(a, b):
         tuple: Normal vector of the collision
     """
     # Obtain real-time information about edges and points of the polygon
-    dict_edges_b = b.get_realtime_edges()
-    dict_normal_edges_b = b.get_realtime_normal_edges()
     dict_points_b = b.get_realtime_points()
 
     # Initialize position_colliding attributes to None
@@ -324,7 +322,6 @@ def is_colliding_p_p(a, b):
 
     # If a collision occurred, return True along with collision information
     if a_position_colliding is not None:
-        pos = a_position_colliding[2]
         return True, a_position_colliding, b_position_colliding, n_ab
 
     # Return False if no collision occurred
