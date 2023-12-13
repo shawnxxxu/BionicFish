@@ -2,7 +2,7 @@ from myfish import *
 
 if __name__ == '__main__':
     # Set up the time to complete game (unit: seconds)
-    time = 30
+    time = 300
     # Set up the speed of fish
     speed = 200
 

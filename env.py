@@ -538,7 +538,7 @@ class Polygon(physics):
 class Pool(Polygon):
     def __init__(self, name, num, shape, n, relative_points, x, y):
         """
-        Initializes a Pool object.
+        Initializes a Pool object(border).
 
         :param name: Object name
         :param num: Object number
@@ -548,7 +548,7 @@ class Pool(Polygon):
         :param x: x-coordinate
         :param y: y-coordinate
         """
-        Polygon.__init__(self, name=name, num=num, mass=99999, shape=shape, n=n, x=x, y=y, relative_points=relative_points,
+        Polygon.__init__(self, name=name, num=num, mass=99999, shape=shape, n=n, x = x, y = y, relative_points=relative_points,
                          have_circle=False)
         self.fixed = True
 
