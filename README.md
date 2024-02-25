@@ -1,4 +1,3 @@
-# Final project for EN.540.635 at JHU
 # Bionic Fish
 ## Abstract
 This project proposal outlines the development of a 2D game utilizing the pygame module
@@ -8,7 +7,7 @@ challenging gaming experience, leveraging the capabilities of pygame for seamles
 development and execution.
 
 ## Team Member
-- Chong-Tong Chow: cchow14@jhu.edu  
+- Chong-Tong Chow: chowchongtong@gmail.com
 - Nianxiang Xu: nxu21@jhu.edu
 
 ## Game Overview
